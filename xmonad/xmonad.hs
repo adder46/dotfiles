@@ -29,8 +29,8 @@ myAdditionalKeys =
     ]
 
 main = xmonad $ docks defaultConfig
-    { 
-	  workspaces = myWorkspaces,
+    {
+      workspaces = myWorkspaces,
       borderWidth = 2,
       focusedBorderColor = "#226fa5", 
       normalBorderColor = "#191919",

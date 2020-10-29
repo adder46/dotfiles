@@ -1,1 +1,0 @@
-/home/alex/.xmonad/xmonad.hs

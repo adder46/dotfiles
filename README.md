@@ -12,6 +12,12 @@ Copy `xmonad/xmonad.hs` and `.xmobarrc` to `$HOME`.
 
 **Step 3**:
 
+```sh
+echo 'xmobar &' > ~/.xsessionrc
+```
+
+**Step 4**:
+
 Set default WM:
 
 https://askubuntu.com/questions/143376/how-to-change-the-xfce4-default-window-manager

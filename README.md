@@ -2,13 +2,20 @@
 
 **Step 1**:
 
+Install everything:
+
 ```sh
 sudo apt install ghc xmonad xmobar
 ```
 
 **Step 2**:
 
-Copy `xmonad/xmonad.hs` and `.xmobarrc` to `$HOME`.
+Copy `xmonad/xmonad.hs` and `.xmobarrc` to `$HOME`:
+
+```sh
+cp -r xmonad ~
+cp .xmobarrc ~
+```
 
 **Step 3**:
 

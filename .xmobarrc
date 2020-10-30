@@ -50,6 +50,7 @@ Config {
         , Run MultiCpu       [ "--template" , "cpu: <autototal>"
 							 , "-p", "2"
                              , "-c", "0"
+                             , "-S", "True"
                              , "--Low"      , "50"         -- units: %
                              , "--High"     , "85"         -- units: %
                              , "--low"      , "#5FFFAF"

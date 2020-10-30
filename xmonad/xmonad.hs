@@ -15,9 +15,9 @@ myLayout = gaps [(U, 10), (R, 10), (L, 10), (D, 10)] $ smartSpacing 10 $ (tiled 
                    ratio = 1/2
                    delta = 3/100
 
-myExtraWorkspaces = [(xK_0, "0"),(xK_minus, "tmp"),(xK_equal, "swap")]
+myExtraWorkspaces = [(xK_0, "0"), (xK_minus, "tmp"), (xK_equal, "swap")]
 
-myWorkspaces = ["1","2","3","4","5","6","7","8","9"] ++ (map snd myExtraWorkspaces)
+myWorkspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9"] ++ (map snd myExtraWorkspaces)
 
 myAdditionalKeys =
     [ ((mod1Mask, key), (windows $ W.greedyView ws))

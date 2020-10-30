@@ -21,11 +21,11 @@ myWorkspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9"] ++ (map snd myExtra
 
 myAdditionalKeys =
     [ ((mod1Mask, key), (windows $ W.greedyView ws))
-      | (key,ws) <- myExtraWorkspaces
+      | (key, ws) <- myExtraWorkspaces
     ]
     ++
     [ ((mod1Mask .|. shiftMask, key), (windows $ W.shift ws))
-      | (key,ws) <- myExtraWorkspaces
+      | (key, ws) <- myExtraWorkspaces
     ]
 
 main = xmonad $ docks defaultConfig

@@ -5,6 +5,7 @@ import XMonad.Layout.Gaps
 import XMonad.Layout.Spacing
 import XMonad.Layout.WindowNavigation
 import XMonad.Util.EZConfig(additionalKeys)
+import XMonad.Util.Run(spawnPipe)
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
 
@@ -28,13 +29,15 @@ myAdditionalKeys =
       | (key, ws) <- myExtraWorkspaces
     ]
 
-main = xmonad $ docks defaultConfig
-    {
-      workspaces = myWorkspaces,
-      borderWidth = 2,
-      focusedBorderColor = "#226fa5", 
-      normalBorderColor = "#191919",
-      startupHook = setWMName "LG3D",
-      layoutHook = avoidStruts $ myLayout
-    } `additionalKeys` (myAdditionalKeys)
+main = do
+    xmproc <- spawnPipe "xmobar"
+    xmonad $ docks defaultConfig
+        {
+          workspaces = myWorkspaces,
+      	  borderWidth = 2,
+          focusedBorderColor = "#226fa5", 
+          normalBorderColor = "#191919",
+          startupHook = setWMName "LG3D",
+          layoutHook = avoidStruts $ myLayout
+        } `additionalKeys` (myAdditionalKeys)
 

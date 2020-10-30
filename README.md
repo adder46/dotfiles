@@ -10,6 +10,13 @@ sudo apt install ghc xmonad xmobar
 
 **Step 2**:
 
+Clone the repo and cd into it:
+
+```sh
+git clone https://github.com/adder46/xfce-xmonad
+cd xfce-xmonad
+```
+
 Copy `xmonad/` and `.xmobarrc` to `$HOME`:
 
 ```sh

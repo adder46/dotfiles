@@ -59,7 +59,8 @@ Config {
                              ] 10
                           
         -- memory usage monitor
-        , Run Memory         [ "--template" , "mem: <usedratio>%"
+        , Run Memory         [ "--template" , "mem: <usedratio>"
+                             , "-S", "True"
                              , "--Low"      , "20"        -- units: %
                              , "--High"     , "90"        -- units: %
                              , "--low"      , "#5FFFAF"
@@ -68,7 +69,9 @@ Config {
                              ] 10
 
         -- swap usage monitor
-        , Run Swap           [ "--template", "swap: <usedratio>%" ] 10
+        , Run Swap           [ "--template", "swap: <usedratio>"
+                             , "-S", "True"
+                             ] 10
 
         -- time and date indicator 
         --   (%F = y-m-d date, %a = day of week, %T = h:m:s time)

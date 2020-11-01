@@ -48,7 +48,7 @@ Config {
 
         -- cpu activity monitor
         , Run MultiCpu       [ "--template" , "cpu: <autototal>"
-                             , "-p", "2"
+                             , "-p", "3"
                              , "-c", "0"
                              , "-S", "True"
                              , "--Low"      , "50"         -- units: %

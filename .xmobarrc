@@ -1,9 +1,9 @@
 Config { 
 
    -- appearance
-     font =         "xft:Ubuntu Mono:size=9:bold:antialias=true"
-   , bgColor =      "#242323"
-   , fgColor =      "#D9D7BF"
+     font =         "xft:Source Code Pro:size=9:antialias=true"
+   , bgColor =      "white"
+   , fgColor =      "#000000"
    , position =     TopW C 100
    , border =       BottomB
    , borderColor =  "#000000"
@@ -11,7 +11,7 @@ Config {
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   , template = " %multicpu% | %memory% | %swap% | %dynnetwork% }{ %battery% | %date% "
+   , template = " %multicpu% | %memory% | %swap% | %dynnetwork% | %uptime%"
 
    -- general behavior
    , lowerOnStart =     True    -- send to bottom of window stack on start
@@ -38,12 +38,12 @@ Config {
    , commands = 
 
         -- network activity monitor (dynamic interface resolution)
-        [ Run DynNetwork     [ "--template" , "<dev>: <tx> kB/s | <rx> kB/s"
+        [ Run DynNetwork     [ "--template" , "<dev>: <tx> KBps | <rx> KBps"
                              , "--Low"      , "1000"       -- units: B/s
                              , "--High"     , "5000"       -- units: B/s
-                             , "--low"      , "#5FFFAF"
-                             , "--normal"   , "#FFFF00"
-                             , "--high"     , "#FF0000"
+                             , "--low"      , "#4d4d4d"
+                             , "--normal"   , "black"
+                             , "--high"     , "#a0522d"
                              ] 10
 
         -- cpu activity monitor
@@ -51,9 +51,9 @@ Config {
                              , "-S", "True"
                              , "--Low"      , "50"         -- units: %
                              , "--High"     , "85"         -- units: %
-                             , "--low"      , "#5FFFAF"
-                             , "--normal"   , "#FFFF00"
-                             , "--high"     , "#FF0000"
+                             , "--low"      , "#4d4d4d"
+                             , "--normal"   , "black"
+                             , "--high"     , "#a0522d"
                              ] 10
                           
         -- memory usage monitor
@@ -61,9 +61,9 @@ Config {
                              , "-S", "True"
                              , "--Low"      , "20"        -- units: %
                              , "--High"     , "90"        -- units: %
-                             , "--low"      , "#5FFFAF"
-                             , "--normal"   , "#FFFF00"
-                             , "--high"     , "#FF0000"
+                             , "--low"      , "#4d4d4d"
+                             , "--normal"   , "black"
+                             , "--high"     , "#a0522d"
                              ] 10
 
         -- swap usage monitor
@@ -71,25 +71,11 @@ Config {
                              , "-S", "True"
                              ] 10
 
-        -- time and date indicator 
-        --   (%F = y-m-d date, %a = day of week, %T = h:m:s time)
-        , Run Date           "<fc=#ABABAB>%F (%a) %T</fc>" "date" 10
+        -- uptime monitor
+        , Run Uptime         [ "--template", "up: <days> <hours> <minutes>"
+                             , "-S", "True"
+                             ] 10
 
-        , Run Battery        [ "--template" , "Batt: <acstatus>"
-                             , "--Low"      , "10"        -- units: %
-                             , "--High"     , "80"        -- units: %
-                             , "--low"      , "#FF0000"
-                             , "--normal"   , "#FFFF00"
-                             , "--high"     , "#5FFFAF"
-
-                             , "--" -- battery specific options
-                                       -- discharging status
-                                       , "-o" , "<left>% (<timeleft>)"
-                                       -- AC "on" status
-                                       , "-O" , "<fc=#AFFFFF>Charging</fc>"
-                                       -- charged status
-                                       , "-i" , "<fc=#5FFFAF>Charged</fc>"
-                             ] 50
         ]
     }
 

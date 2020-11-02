@@ -38,9 +38,10 @@ Config {
    , commands = 
 
         -- network activity monitor (dynamic interface resolution)
-        [ Run DynNetwork     [ "--template" , "<dev>: <tx> KBps | <rx> KBps"
-                             , "--Low"      , "1000"       -- units: B/s
-                             , "--High"     , "5000"       -- units: B/s
+        [ Run DynNetwork     [ "--template" , "<dev>: <tx> | <rx>"
+                             , "-S", "True"
+                             , "--Low"      , "125000"       -- units: B/s
+                             , "--High"     , "625000"       -- units: B/s
                              , "--low"      , "#4d4d4d"
                              , "--normal"   , "black"
                              , "--high"     , "#a0522d"

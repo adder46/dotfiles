@@ -5,7 +5,7 @@
 Install everything:
 
 ```sh
-sudo apt install ghc xmonad xmobar
+sudo apt install ghc xmonad xmobar dmenu
 ```
 
 **Step 2**:

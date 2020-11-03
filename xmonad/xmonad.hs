@@ -49,14 +49,14 @@ main = do
                             <+> serverModeEventHookF "XMONAD_PRINT" (io . putStrLn)
           , layoutHook = avoidStruts $ myLayout
           , logHook = dynamicLogWithPP $ def
-			{ ppOutput = hPutStrLn xmproc
-			, ppCurrent = xmobarColor "blue" "" . wrap "[" "]"
-			, ppHiddenNoWindows = xmobarColor "grey" "" . clickable'
-			, ppVisible = wrap "(" ")"
-			, ppUrgent  = xmobarColor "red" "yellow"
+            { ppOutput = hPutStrLn xmproc
+            , ppCurrent = xmobarColor "blue" "" . wrap "[" "]"
+            , ppHiddenNoWindows = xmobarColor "grey" "" . clickable'
+            , ppVisible = wrap "(" ")"
+            , ppUrgent  = xmobarColor "red" "yellow"
             , ppOrder = \(ws:_:_:_) -> [pad ws]
             , ppHidden = clickable'
-			}
+            }
           , startupHook = setWMName "LG3D"
           , manageHook = manageDocks
         } `additionalKeys` (myAdditionalKeys)

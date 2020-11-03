@@ -1,4 +1,6 @@
+import System.IO
 import XMonad
+import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.SetWMName
 import XMonad.Layout.Gaps
@@ -34,10 +36,19 @@ main = do
     xmonad $ docks defaultConfig
         {
           workspaces = myWorkspaces,
-      	  borderWidth = 2,
+          borderWidth = 2,
           focusedBorderColor = "#226fa5", 
           normalBorderColor = "#191919",
+          layoutHook = avoidStruts $ myLayout,
+          logHook = dynamicLogWithPP $ def
+			{ ppOutput = hPutStrLn xmproc
+			, ppCurrent = xmobarColor "blue" "" . wrap "[" "]"
+			, ppHiddenNoWindows = xmobarColor "grey" ""
+			, ppVisible = wrap "(" ")"
+			, ppUrgent  = xmobarColor "red" "yellow"
+            , ppOrder = \(ws:_:_:_) -> [pad ws]
+			},
           startupHook = setWMName "LG3D",
-          layoutHook = avoidStruts $ myLayout
+          manageHook = manageDocks
         } `additionalKeys` (myAdditionalKeys)
 

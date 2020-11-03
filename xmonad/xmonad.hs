@@ -20,7 +20,7 @@ myLayout = gaps [(U, 10), (R, 10), (L, 10), (D, 10)] $ smartSpacing 10 $ (tiled 
                    ratio = 1/2
                    delta = 3/100
 
-myExtraWorkspaces = [(xK_0, "0"), (xK_minus, "minus"), (xK_equal, "equal")]
+myExtraWorkspaces = [(xK_0, "10"), (xK_minus, "11"), (xK_equal, "12")]
 
 myWorkspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9"] ++ (map snd myExtraWorkspaces)
 

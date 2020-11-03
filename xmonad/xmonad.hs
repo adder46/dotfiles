@@ -10,6 +10,7 @@ import XMonad.Util.EZConfig(additionalKeys)
 import XMonad.Util.Run(spawnPipe)
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
+import Data.Maybe
 
 myLayout = gaps [(U, 10), (R, 10), (L, 10), (D, 10)] $ smartSpacing 10 $ (tiled ||| Mirror tiled ||| Full)
                where 
@@ -18,9 +19,18 @@ myLayout = gaps [(U, 10), (R, 10), (L, 10), (D, 10)] $ smartSpacing 10 $ (tiled 
                    ratio = 1/2
                    delta = 3/100
 
-myExtraWorkspaces = [(xK_0, "0"), (xK_minus, "tmp"), (xK_equal, "swap")]
+myExtraWorkspaces = [(xK_0, "0"), (xK_minus, "minus"), (xK_equal, "equal")]
 
-myWorkspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9"] ++ (map snd myExtraWorkspaces)
+xmobarEscape = concatMap doubleLts
+  where doubleLts '<' = "<<"
+        doubleLts x   = [x]
+
+myWorkspaces :: [String]
+myWorkspaces = clickable . (map xmobarEscape) $ ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "minus", "equal"]
+    where
+        clickable l = [ "<action=xdotool key alt+" ++ show (n) ++ ">" ++ ws ++ "</action>" |
+                             (i, ws) <- zip ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "minus", "equal"] l,
+                             let n = i ]
 
 myAdditionalKeys =
     [ ((mod1Mask, key), (windows $ W.greedyView ws))

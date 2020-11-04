@@ -5,8 +5,11 @@
 Install everything:
 
 ```sh
-sudo apt install ghc xmonad xmobar dmenu
+sudo apt install ghc xmonad xmobar dmenu playerctl
 ```
+Install `Source Code Pro` font:
+
+https://askubuntu.com/questions/193072/how-to-use-the-adobe-source-code-pro-font
 
 **Step 2**:
 
@@ -25,6 +28,12 @@ cp .xmobarrc ~
 ```
 
 **Step 3**:
+
+```
+ghc --make ~/.xmonad/xmonadctl.hs
+```
+
+**Step 4**:
 
 Set default WM:
 

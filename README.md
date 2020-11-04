@@ -20,10 +20,10 @@ git clone https://github.com/adder46/xfce-xmonad
 cd xfce-xmonad
 ```
 
-Copy `xmonad/` and `.xmobarrc` to `$HOME`:
+Copy `.xmonad/` and `.xmobarrc` to `$HOME`:
 
 ```sh
-cp -r xmonad ~
+cp -r .xmonad ~
 cp .xmobarrc ~
 ```
 

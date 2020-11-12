@@ -1,4 +1,6 @@
-# xfce-xmonad
+# dotfiles
+
+## Installing XMonad
 
 **Step 1**:
 

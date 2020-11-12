@@ -1,0 +1,41 @@
+add_newline = false
+
+format = """
+$username[@](159 bold)$hostname:\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$python\
+$rust\
+$character
+"""
+
+[username]
+style_user = "204 bold"
+style_root = "white bold"
+format = "[$user]($style)"
+disabled = false
+show_always = true
+
+[hostname]
+ssh_only = false
+format =  "[$hostname](204 bold)"
+disabled = false
+
+[directory]
+read_only = "🔒"
+truncate_to_repo = false
+
+[character]
+success_symbol = '''\$'''
+error_symbol = '''\$'''
+
+[python]
+pyenv_version_name = true
+pyenv_prefix = ""
+disabled = false
+
+[rust]
+disabled = false

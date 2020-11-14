@@ -6,39 +6,32 @@ import XMonad.Hooks.ServerMode
 import XMonad.Hooks.SetWMName
 import XMonad.Layout.Gaps
 import XMonad.Layout.Spacing
-import XMonad.Layout.WindowNavigation
-import XMonad.Util.EZConfig(additionalKeys)
-import XMonad.Util.Run(spawnPipe)
+import XMonad.Util.EZConfig (additionalKeys)
+import XMonad.Util.Run (spawnPipe)
 import qualified XMonad.StackSet as W
-import qualified Data.Map as M
-import Data.Maybe
 
-myLayout = gaps [(U, 10), (R, 10), (L, 10), (D, 10)] $ smartSpacing 10 $ (tiled ||| Mirror tiled ||| Full)
-               where 
-                   tiled = Tall nmaster delta ratio
-                   nmaster = 1
-                   ratio = 1/2
-                   delta = 3/100
+myLayout = gaps [(U, 10), (R, 10), (L, 10), (D, 10)] $ spacingRaw True (Border 0 10 10 10) True (Border 10 10 10 10) True $
+             layoutHook def
 
 myExtraWorkspaces = [(xK_0, "10"), (xK_minus, "11"), (xK_equal, "12")]
 
-myWorkspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9"] ++ (map snd myExtraWorkspaces)
+myWorkspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
 
 clickable' :: WorkspaceId -> String
-clickable' w = xmobarAction ("/home/alex/.xmonad/xmonadctl view\\\"" ++ w ++ "\\\"") "1" w
+clickable' w = xmobarAction ("xmonadctl view\\\"" ++ w ++ "\\\"") "1" w
 
 myAdditionalKeys =
-    [ ((mod1Mask, key), (windows $ W.greedyView ws))
+    [ ((mod1Mask, key), windows $ W.greedyView ws)
       | (key, ws) <- myExtraWorkspaces
     ]
     ++
-    [ ((mod1Mask .|. shiftMask, key), (windows $ W.shift ws))
+    [ ((mod1Mask .|. shiftMask, key), windows $ W.shift ws)
       | (key, ws) <- myExtraWorkspaces
     ]
 
 main = do
     xmproc <- spawnPipe "xmobar"
-    xmonad $ docks defaultConfig
+    xmonad $ docks def
         {
           workspaces = myWorkspaces
           , borderWidth = 2
@@ -47,7 +40,7 @@ main = do
           , handleEventHook = serverModeEventHookCmd
                             <+> serverModeEventHook
                             <+> serverModeEventHookF "XMONAD_PRINT" (io . putStrLn)
-          , layoutHook = avoidStruts $ myLayout
+          , layoutHook = avoidStruts myLayout
           , logHook = dynamicLogWithPP $ def
             { ppOutput = hPutStrLn xmproc
             , ppCurrent = xmobarColor "blue" "" . wrap "[" "]"
@@ -59,5 +52,5 @@ main = do
             }
           , startupHook = setWMName "LG3D"
           , manageHook = manageDocks
-        } `additionalKeys` (myAdditionalKeys)
+        } `additionalKeys` myAdditionalKeys
 

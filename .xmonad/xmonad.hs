@@ -28,6 +28,20 @@ myAdditionalKeys =
     [ ((mod1Mask .|. shiftMask, key), windows $ W.shift ws)
       | (key, ws) <- myExtraWorkspaces
     ]
+    ++
+    [
+      ((mod1Mask, xK_F2), spawn "thunar")
+    , ((mod1Mask, xK_F3), spawn "firefox")
+    , ((mod1Mask, xK_F4), spawn "code")
+    , ((mod1Mask, xK_F5), spawn "thunderbird")
+    , ((mod1Mask, xK_F2), spawn "thunar")
+    , ((mod1Mask, xK_Escape), spawn "xfce4-appfinder")
+    , ((mod4Mask, xK_Print), spawn "xfce4-screenshooter")
+    , ((mod4Mask, xK_KP_Add), spawn "amixer -D pulse sset Master 5%+")
+    , ((mod4Mask, xK_KP_Subtract), spawn "amixer -D pulse sset Master 5%-")
+    , ((mod1Mask .|. controlMask, xK_p), spawn "passmenu") 
+    , ((mod1Mask .|. controlMask, xK_c), spawn "clipmenu")
+    ]
 
 main = do
     xmproc <- spawnPipe "xmobar"

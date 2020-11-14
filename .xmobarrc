@@ -79,7 +79,7 @@ Config {
                              ] 10
         , Run UnsafeStdinReader
 
-        , Run Com "bash" ["/home/alex/.xmonad/spotify.sh"] "music" 10
+        , Run Com "bash" ["/home/alex/.xmonad/spotify"] "music" 10
 
         ]
     }

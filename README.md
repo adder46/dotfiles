@@ -4,11 +4,12 @@
 
 **Step 1**:
 
-Install everything:
+Install the dependencies:
 
 ```sh
 sudo apt install ghc xmonad xmobar dmenu playerctl
 ```
+
 Install `Source Code Pro` font:
 
 https://askubuntu.com/questions/193072/how-to-use-the-adobe-source-code-pro-font
@@ -18,8 +19,8 @@ https://askubuntu.com/questions/193072/how-to-use-the-adobe-source-code-pro-font
 Clone the repo and cd into it:
 
 ```sh
-git clone https://github.com/adder46/xfce-xmonad
-cd xfce-xmonad
+git clone https://github.com/adder46/dotfiles
+cd dotfiles
 ```
 
 Copy `.xmonad/` and `.xmobarrc` to `$HOME`:
@@ -31,8 +32,11 @@ cp .xmobarrc ~
 
 **Step 3**:
 
+Compile `xmonadctl.hs` and add it to PATH:
+
 ```
 ghc --make ~/.xmonad/xmonadctl.hs
+sudo ln -s "$(realpath ~/.xmonad/xmonadctl)" /usr/bin/xmonadctl
 ```
 
 **Step 4**:

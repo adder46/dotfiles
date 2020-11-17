@@ -137,3 +137,6 @@ source ~/.config/fzf
 
 # safer rm
 alias rm="rm -I"
+
+# xclip
+alias xcp="xclip -selection clipboard"

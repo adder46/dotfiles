@@ -134,3 +134,6 @@ eval "$(pyenv virtualenv-init -)"
 # fzf
 source ~/.config/fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# safer rm
+alias rm="rm -I"

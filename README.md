@@ -1,27 +1,8 @@
 # dotfiles
 
+This is the configuration of my Xubuntu workstation.
+
 ## Instructions
-
-Install `Source Code Pro` font:
-
-https://askubuntu.com/questions/193072/how-to-use-the-adobe-source-code-pro-font
-
-
-Install xmonad and its dependencies:
-
-```sh
-sudo apt install ghc xmonad xmobar dmenu playerctl
-git clone https://github.com/adder46/dotfiles.git
-cp dotfiles/.config/autostart/clipmenud.desktop ~/.config/autostart
-cp -r dotfiles/.xmonad ~
-cp dotfiles/.xmobarrc ~
-ghc --make ~/.xmonad/xmonadctl.hs
-sudo ln -s "$(realpath ~/.xmonad/xmonadctl)" /usr/bin/xmonadctl
-```
-
-Set default WM:
-
-https://askubuntu.com/questions/143376/how-to-change-the-xfce4-default-window-manager
 
 Install clipnotify:
 
@@ -45,3 +26,23 @@ Install passmenu:
 git clone https://github.com/adder46/passmenu.git
 sudo cp passmenu/passmenu /usr/local/bin
 ```
+
+Install xmonad and its dependencies:
+
+```sh
+sudo apt install ghc xmonad xmobar dmenu playerctl
+git clone https://github.com/adder46/dotfiles.git
+cp dotfiles/.config/autostart/clipmenud.desktop ~/.config/autostart
+cp -r dotfiles/.xmonad ~
+cp dotfiles/.xmobarrc ~
+ghc --make ~/.xmonad/xmonadctl.hs
+sudo ln -s "$(realpath ~/.xmonad/xmonadctl)" /usr/bin/xmonadctl
+```
+
+Install `Source Code Pro` font:
+
+https://askubuntu.com/questions/193072/how-to-use-the-adobe-source-code-pro-font
+
+Set default WM:
+
+https://askubuntu.com/questions/143376/how-to-change-the-xfce4-default-window-manager

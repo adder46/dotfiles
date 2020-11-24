@@ -140,3 +140,6 @@ alias rm="rm -I"
 
 # xclip
 alias xcp="xclip -selection clipboard"
+
+# poetry
+source $HOME/.poetry/env

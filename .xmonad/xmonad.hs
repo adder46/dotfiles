@@ -34,7 +34,6 @@ myAdditionalKeys =
     , ((mod1Mask, xK_F3), spawn "firefox")
     , ((mod1Mask, xK_F4), spawn "code")
     , ((mod1Mask, xK_F5), spawn "thunderbird")
-    , ((mod1Mask, xK_F2), spawn "thunar")
     , ((mod1Mask, xK_Escape), spawn "xfce4-appfinder")
     , ((mod4Mask, xK_Print), spawn "xfce4-screenshooter")
     , ((mod4Mask, xK_KP_Add), spawn "amixer -D pulse sset Master 5%+")

@@ -143,3 +143,6 @@ alias xcp="xclip -selection clipboard"
 
 # poetry
 source $HOME/.poetry/env
+
+# cargo bash completion
+source $(rustc --print sysroot)/etc/bash_completion.d/cargo

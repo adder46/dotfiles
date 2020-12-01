@@ -4,3 +4,8 @@
 	signingKey = 4192F50CADB43D90
 [commit]
 	gpgSign = true
+[alias]
+	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	pom = push origin master
+	pomf = push origin master --force
+	adr = add . --dry-run

@@ -18,9 +18,6 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # hstr-rs
 alias hh=hstr-rs
 
-# Pretty git log
-alias lola='git log --graph --decorate --pretty=oneline --abbrev-commit --all'
-
 # xclip
 alias xcp='xclip -selection clipboard'
 

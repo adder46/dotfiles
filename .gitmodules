@@ -10,6 +10,6 @@
 [submodule "deps/nord-dircolors"]
 	path = deps/nord-dircolors
 	url = https://github.com/arcticicestudio/nord-dircolors
-[submodule "nord-xfce-terminal"]
-	path = nord-xfce-terminal
+[submodule "deps/nord-xfce-terminal"]
+	path = deps/nord-xfce-terminal
 	url = https://github.com/arcticicestudio/nord-xfce-terminal

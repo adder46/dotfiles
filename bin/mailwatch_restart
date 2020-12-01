@@ -1,3 +1,6 @@
 #!/bin/bash
 
+# kills mailwatcher so it can resurrect
+# usage: ./mailwatch_restart
+
 kill -9 "$(pgrep -f libmailwatch)"

@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# gets passwords from ~/.password-store
+# and pipes them to dmenu
+# usage: ./passmenu
+
 get_passwords() {
     local files=(~/.password-store/*)
     # expand */ to produce a pattern,

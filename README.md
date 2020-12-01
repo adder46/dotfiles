@@ -8,54 +8,23 @@ Clone the repo:
 
 ```bash
 git clone --recurse-submodules https://github.com/adder46/dotfiles
-cd dotfiles/deps
 ```
 
-Install clipnotify:
+Then proceed by following the official instructions to install dependencies in the `deps` folder.
+
+Copy everything in the `scripts` folder somewhere in your PATH.
+
+Copy everything in the `.config` folder to `~/.config`:
 
 ```bash
-make -C clipnotify
-sudo cp clipnotify/clipnotify /usr/local/bin
-```
-
-Install clipmenu:
-
-```bash
-make -C clipmenu
-sudo make -C clipmenu install
-```
-
-Install passmenu:
-
-```bash
-sudo cp passmenu/passmenu /usr/local/bin
-```
-
-Install nord-xfce-terminal:
-
-```bash
-nord-xfce-terminal/install.sh
-```
-
-Install nord-dircolors:
-
-```bash
-cp nord-dircolors/src/dir_colors ~
-```
-
-Install mailwatch_restart:
-```bash
-cd ../scripts
-cp mailwatch_restart /usr/local/bin
+cp -R .config/* ~/.config
 ```
 
 Install xmonad and its dependencies:
 
 ```bash
-cd ..
 sudo apt install ghc xmonad xmobar dmenu playerctl
-cp -R .config/* ~/.config
-cp -R .xmonad ~
+cp -R dotfiles/.xmonad ~
 ghc --make ~/.xmonad/xmonadctl.hs
 sudo cp ~/.xmonad/xmonadctl /usr/bin/xmonadctl
 ```

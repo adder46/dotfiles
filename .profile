@@ -12,7 +12,7 @@
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
     if [ -f "$HOME/.bashrc" ]; then
-	. "$HOME/.bashrc"
+	    . "$HOME/.bashrc"
     fi
 fi
 
@@ -27,7 +27,6 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 export PATH="$HOME/.cargo/bin:$PATH"
-
+export PATH="$HOME/.pyenv/bin:$PATH"
 export PATH="$HOME/.poetry/bin:$PATH"
-
 export PATH="$HOME/bin:$PATH"

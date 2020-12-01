@@ -95,7 +95,6 @@ source ~/.config/fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # pyenv
-export PATH="/home/alex/.pyenv/bin:$PATH"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"

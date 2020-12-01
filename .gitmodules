@@ -1,12 +1,12 @@
-[submodule "nord-dircolors"]
-	path = nord-dircolors
-	url = https://github.com/arcticicestudio/nord-dircolors
-[submodule "clipnotify"]
-	path = clipnotify
+[submodule "deps/clipnotify"]
+	path = deps/clipnotify
 	url = https://github.com/cdown/clipnotify
-[submodule "clipmenu"]
-	path = clipmenu
+[submodule "deps/clipmenu"]
+	path = deps/clipmenu
 	url = https://github.com/cdown/clipmenu
-[submodule "passmenu"]
-	path = passmenu
+[submodule "deps/passmenu"]
+	path = deps/passmenu
 	url = https://github.com/adder46/passmenu
+[submodule "deps/nord-dircolors"]
+	path = deps/nord-dircolors
+	url = https://github.com/arcticicestudio/nord-dircolors

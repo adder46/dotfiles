@@ -40,6 +40,7 @@ myAdditionalKeys =
     , ((mod4Mask, xK_KP_Subtract), spawn "amixer -D pulse sset Master 5%-")
     , ((mod1Mask .|. controlMask, xK_p), spawn "passmenu") 
     , ((mod1Mask .|. controlMask, xK_c), spawn "clipmenu")
+    , ((mod1Mask .|. controlMask, xK_m), spawn "mailwatch_restart")
     ]
 
 main = do

@@ -43,6 +43,12 @@ Install nord-dircolors:
 cp nord-dircolors/src/dir_colors ~
 ```
 
+Install mailwatch_restart:
+```bash
+cd ../scripts
+cp mailwatch_restart /usr/local/bin
+```
+
 Install xmonad and its dependencies:
 
 ```bash

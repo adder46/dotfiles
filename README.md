@@ -32,9 +32,8 @@ Install xmonad and its dependencies:
 ```sh
 sudo apt install ghc xmonad xmobar dmenu playerctl
 git clone https://github.com/adder46/dotfiles
-mkdir -p ~/.config/xmobar
-cp -r dotfiles/.config/ ~
-cp -r dotfiles/.xmonad ~
+cp -R dotfiles/.config/* ~/.config
+cp -R dotfiles/.xmonad ~
 ghc --make ~/.xmonad/xmonadctl.hs
 sudo ln -s "$(realpath ~/.xmonad/xmonadctl)" /usr/bin/xmonadctl
 ```

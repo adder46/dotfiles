@@ -4,39 +4,48 @@ This is the configuration of my Xubuntu workstation.
 
 ## Instructions
 
+Clone the repo:
+
+```bash
+git clone --recurse-submodules https://github.com/adder46/dotfiles
+cd dotfiles/deps
+```
+
 Install clipnotify:
 
-```
-git clone https://github.com/cdown/clipnotify.git
+```bash
 make -C clipnotify
 sudo cp clipnotify/clipnotify /usr/local/bin
 ```
 
 Install clipmenu:
 
-```
-git clone https://github.com/cdown/clipmenu.git
+```bash
 make -C clipmenu
 sudo make -C clipmenu install
 ```
 
 Install passmenu:
 
-```
-git clone https://github.com/adder46/passmenu.git
+```bash
 sudo cp passmenu/passmenu /usr/local/bin
+```
+
+Install nord-dircolors:
+
+```bash
+cp nord-dircolors/src/dir_colors ~
 ```
 
 Install xmonad and its dependencies:
 
-```sh
+```bash
+cd ..
 sudo apt install ghc xmonad xmobar dmenu playerctl
-git clone https://github.com/adder46/dotfiles
-cp -R dotfiles/.config/* ~/.config
-cp -R dotfiles/.xmonad ~
-cp dotfiles/nord-dircolors/src/dir_colors ~
+cp -R .config/* ~/.config
+cp -R .xmonad ~
 ghc --make ~/.xmonad/xmonadctl.hs
-sudo ln -s "$(realpath ~/.xmonad/xmonadctl)" /usr/bin/xmonadctl
+sudo cp ~/.xmonad/xmonadctl /usr/bin/xmonadctl
 ```
 
 Install `Source Code Pro` font:

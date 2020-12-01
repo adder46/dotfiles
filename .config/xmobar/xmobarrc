@@ -11,7 +11,7 @@ Config {
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   , template = " %multicpu% | %memory% | %swap% | %dynnetwork% | %uptime% | ♫ %music% }{ %UnsafeStdinReader%"
+   , template = " %multicpu% | %memory% | %swap% | %dynnetwork% | %uptime% | %music% }{ %UnsafeStdinReader%"
 
    -- general behavior
    , lowerOnStart =     True    -- send to bottom of window stack on start
@@ -80,7 +80,7 @@ Config {
 
         , Run UnsafeStdinReader
 
-        , Run Com "bash" ["-c", "$HOME/.config/xmobar/music"] "music" 10
+        , Run Com "bash" ["-c", "$HOME/.config/xmobar/spotify"] "music" 10
 
         ]
     }

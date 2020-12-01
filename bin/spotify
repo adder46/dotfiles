@@ -1,8 +1,6 @@
 #!/bin/bash
 
-running="$(pidof spotify)"
-
-if [[ ! -z "$running" ]]; then
+if [[ ! -z "$(pidof spotify)" ]]; then
     artist=$(playerctl metadata artist)
     song=$(playerctl metadata title | cut -c 1-60)
     printf "♫ %s - %s\n" "$artist" "$song"

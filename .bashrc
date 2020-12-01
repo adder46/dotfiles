@@ -146,3 +146,6 @@ source $HOME/.poetry/env
 
 # cargo bash completion
 source $(rustc --print sysroot)/etc/bash_completion.d/cargo
+
+# termbin
+alias tb="nc termbin.com 9999"

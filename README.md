@@ -31,6 +31,12 @@ Install passmenu:
 sudo cp passmenu/passmenu /usr/local/bin
 ```
 
+Install nord-xfce-terminal:
+
+```bash
+nord-xfce-terminal/install.sh
+```
+
 Install nord-dircolors:
 
 ```bash

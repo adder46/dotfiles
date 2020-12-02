@@ -42,6 +42,9 @@ myAdditionalKeys =
     , ((mod1Mask .|. controlMask, xK_c), spawn "clipmenu")
     , ((mod1Mask .|. controlMask, xK_m), spawn "mailwatch_restart")
     , ((mod1Mask .|. controlMask, xK_x), spawn "xfce4-panel -r")
+    , ((mod1Mask .|. controlMask, xK_Left), spawn "playerctl previous")
+    , ((mod1Mask .|. controlMask, xK_Right), spawn "playerctl next")
+    , ((mod1Mask .|. controlMask, xK_space), spawn "playerctl play-pause")
     ]
 
 main = do

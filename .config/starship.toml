@@ -26,7 +26,7 @@ disabled = false
 
 [directory]
 format = "[$path]($style)[$read_only]($read_only_style) "
-read_only = " 🔒 "
+read_only = " 🔒"
 read_only_style = "yellow bold"
 truncate_to_repo = false
 disabled = false

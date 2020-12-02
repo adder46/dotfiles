@@ -41,6 +41,7 @@ myAdditionalKeys =
     , ((mod1Mask .|. controlMask, xK_p), spawn "passmenu") 
     , ((mod1Mask .|. controlMask, xK_c), spawn "clipmenu")
     , ((mod1Mask .|. controlMask, xK_m), spawn "mailwatch_restart")
+    , ((mod1Mask .|. controlMask, xK_x), spawn "xfce4-panel -r")
     ]
 
 main = do

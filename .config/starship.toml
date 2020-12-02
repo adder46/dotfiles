@@ -25,8 +25,11 @@ format =  "[$hostname](204 bold)"
 disabled = false
 
 [directory]
-read_only = "🔒"
+format = "[$path]($style)[$read_only]($read_only_style) "
+read_only = " 🔒 "
+read_only_style = "yellow bold"
 truncate_to_repo = false
+disabled = false
 
 [character]
 success_symbol = '''\$'''

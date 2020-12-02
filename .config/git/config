@@ -9,3 +9,4 @@
 	pom = push origin master
 	pomf = push origin master --force
 	adr = add . --dry-run
+	rhh = reset --hard HEAD

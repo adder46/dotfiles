@@ -3,7 +3,7 @@
 # prints currently played track on spotify
 # usage: ./spotify
 
-if [[ ! -z "$(pgrep spotify)" ]]; then
+if [[ ! -z "$(pidof spotify)" ]]; then
     artist=$(playerctl metadata artist)
     song=$(playerctl metadata title | cut -c 1-60)
     printf "♫ %s - %s\n" "$artist" "$song"

@@ -1,4 +1,3 @@
-
 import System.IO
 import XMonad
 import XMonad.Hooks.DynamicLog
@@ -32,7 +31,6 @@ myWorkspaces =
   , (xK_minus, "11")
   , (xK_equal, "12")
   ]
-
 
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     [ ((modMask, key), windows $ onCurrentScreen W.greedyView ws)

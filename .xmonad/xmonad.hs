@@ -126,8 +126,10 @@ myAdditionalKeysP =
     , ("M-C-<Space>", spawn "playerctl play-pause")
     ]
 
+unScreen :: ScreenId -> Int ; unScreen (S n) = n
+
 clickable' :: ScreenId -> WorkspaceId -> String
-clickable' s w =  xmobarAction ("xmonadctl view\\\"" ++ show (fromEnum s) ++ "_" ++ w ++ "\\\"") "1" w
+clickable' s w =  xmobarAction ("xmonadctl view\\\"" ++ show (unScreen s) ++ "_" ++ w ++ "\\\"") "1" w
 compareNumbers = comparing (read :: String -> Int)
 
 pp h s = marshallPP s def 

@@ -153,6 +153,7 @@ main = do
     xmonad $ docks def
         {
           workspaces = withScreens 2 (map show [1..12])
+          , terminal = "xfce4-terminal"
           , keys = myKeys
           , borderWidth = 2
           , focusedBorderColor = "#226fa5"

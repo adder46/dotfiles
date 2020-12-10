@@ -14,8 +14,6 @@ import Data.Ord
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
 import XMonad.Util.WorkspaceCompare
-import Debug.Trace(trace)
-
 
 myLayout = gaps [(U, 10), (R, 10), (L, 10), (D, 10)] $ spacingRaw True (Border 0 10 10 10) True (Border 10 10 10 10) True $
              layoutHook def
@@ -131,7 +129,8 @@ myAdditionalKeysP =
     , ("M-C-<Space>", spawn "playerctl play-pause")
     ]
 
-unScreen :: ScreenId -> Int ; unScreen (S n) = n
+unScreen :: ScreenId -> Int
+unScreen (S n) = n
 
 clickable' :: ScreenId -> WorkspaceId -> String
 clickable' s w =  xmobarAction ("xmonadctl view\\\"" ++ show (unScreen s) ++ "_" ++ w ++ "\\\"") "1" w

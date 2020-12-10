@@ -1,15 +1,21 @@
+
 import System.IO
 import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ServerMode
 import XMonad.Hooks.SetWMName
+import XMonad.Layout.IndependentScreens
 import XMonad.Layout.Gaps
 import XMonad.Layout.Spacing
-import XMonad.Util.EZConfig (additionalKeys, additionalKeysP)
+import XMonad.Util.EZConfig (additionalKeysP)
 import XMonad.Util.Run (spawnPipe)
+import Data.Ord
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
+import XMonad.Util.WorkspaceCompare
+import Debug.Trace(trace)
+
 
 myLayout = gaps [(U, 10), (R, 10), (L, 10), (D, 10)] $ spacingRaw True (Border 0 10 10 10) True (Border 10 10 10 10) True $
              layoutHook def
@@ -29,15 +35,13 @@ myWorkspaces =
   , (xK_equal, "12")
   ]
 
-clickable' :: WorkspaceId -> String
-clickable' w = xmobarAction ("xmonadctl view\\\"" ++ w ++ "\\\"") "1" w
 
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
-    [ ((modMask, key), windows $ W.greedyView ws)
+    [ ((modMask, key), windows $ onCurrentScreen W.greedyView ws)
       | (key, ws) <- myWorkspaces
     ]
     ++
-    [ ((modMask .|. shiftMask, key), windows $ W.shift ws)
+    [ ((modMask .|. shiftMask, key), windows $ onCurrentScreen W.shift ws)
       | (key, ws) <- myWorkspaces
     ]
     ++
@@ -122,11 +126,26 @@ myAdditionalKeysP =
     , ("M-C-<Space>", spawn "playerctl play-pause")
     ]
 
+clickable' :: ScreenId -> WorkspaceId -> String
+clickable' s w =  xmobarAction ("xmonadctl view\\\"" ++ show (fromEnum s) ++ "_" ++ w ++ "\\\"") "1" w
+compareNumbers = comparing (read :: String -> Int)
+
+pp h s = marshallPP s def 
+    { ppOutput = hPutStrLn h
+    , ppCurrent = xmobarColor "blue" "" . wrap "[" "]"
+    , ppHiddenNoWindows = xmobarColor "grey" "" . clickable' s
+    , ppVisible = wrap "(" ")"
+    , ppUrgent  = xmobarColor "red" "yellow"
+    , ppOrder = \(ws:_:_:_) -> [pad ws]
+    , ppHidden = clickable' s
+    , ppSort = mkWsSort $ return compareNumbers
+    }
+
 main = do
-    xmproc <- spawnPipe "xmobar"
+    xmprocs <- mapM (\i -> spawnPipe $ "xmobar ~/.config/xmobar/xmobarrc-" ++ show i ++ " -x" ++ show i) [0..1]
     xmonad $ docks def
         {
-          workspaces = map show [1..12]
+          workspaces = withScreens 2 (map show [1..12])
           , keys = myKeys
           , borderWidth = 2
           , focusedBorderColor = "#226fa5"
@@ -135,16 +154,7 @@ main = do
                             <+> serverModeEventHook
                             <+> serverModeEventHookF "XMONAD_PRINT" (io . putStrLn)
           , layoutHook = avoidStruts myLayout
-          , logHook = dynamicLogWithPP $ def
-            { ppOutput = hPutStrLn xmproc
-            , ppCurrent = xmobarColor "blue" "" . wrap "[" "]"
-            , ppHiddenNoWindows = xmobarColor "grey" "" . clickable'
-            , ppVisible = wrap "(" ")"
-            , ppUrgent  = xmobarColor "red" "yellow"
-            , ppOrder = \(ws:_:_:_) -> [pad ws]
-            , ppHidden = clickable'
-            }
+          , logHook = mapM_ dynamicLogWithPP $ zipWith pp xmprocs [0..1]
           , startupHook = setWMName "LG3D"
           , manageHook = manageDocks
         } `additionalKeysP` myAdditionalKeysP
-

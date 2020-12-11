@@ -100,7 +100,8 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 # poetry
-source $HOME/.poetry/env
+source "$HOME/.poetry/env"
 
 # cargo bash completion
-source $(rustc --print sysroot)/etc/bash_completion.d/cargo
+source "$(rustc --print sysroot)/etc/bash_completion.d/cargo"
+

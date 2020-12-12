@@ -23,3 +23,6 @@ alias xcp='xclip -selection clipboard'
 
 # termbin
 alias tb='nc termbin.com 9999'
+
+# pyhstr
+alias py="python3 -ic 'from pyhstr import hh'"

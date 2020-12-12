@@ -105,7 +105,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     ++
     [((m .|. modMask, key), screenWorkspace sc >>= flip whenJust (windows . f))
     | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
-    , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
+    , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
 
 myAdditionalKeysP =

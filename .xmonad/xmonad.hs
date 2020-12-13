@@ -101,6 +101,9 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
  
     -- Restart xmonad
     , ((modMask,  xK_q), broadcastMessage ReleaseResources >> restart "xmonad" True)
+
+    -- Recompile and restart xmonad
+    , ((modMask .|. shiftMask,  xK_r), spawn "xmonad --recompile && xmonad --restart")
     ]
     ++
     [((m .|. modMask, key), screenWorkspace sc >>= flip whenJust (windows . f))

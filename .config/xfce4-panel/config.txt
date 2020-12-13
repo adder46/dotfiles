@@ -1,0 +1,45 @@
+/configver 2
+/panels uint32 1
+/panels/panel-0/autohide-behavior uint32 0
+/panels/panel-0/background-rgba [<0.1803921568627451>, <0.20392156862745098>, <0.21176470588235294>, <1.0>]
+/panels/panel-0/background-style uint32 1
+/panels/panel-0/length uint32 100
+/panels/panel-0/length-adjust true
+/panels/panel-0/mode uint32 0
+/panels/panel-0/plugin-ids [<1>, <3>, <17>, <5>, <8>, <10>, <11>, <12>, <13>]
+/panels/panel-0/position 'p=8;x=1920;y=1068'
+/panels/panel-0/position-locked true
+/panels/panel-0/size uint32 24
+/panels/panel-0/span-monitors true
+/plugins/plugin-1 'whiskermenu'
+/plugins/plugin-10 'pulseaudio'
+/plugins/plugin-10/enable-keyboard-shortcuts true
+/plugins/plugin-10/enable-mpris true
+/plugins/plugin-10/mixer-command 'pavucontrol'
+/plugins/plugin-10/mpris-players 'chromium.instance5317;firefox.instance1330983;firefox.instance1400852;firefox.instance1413576;firefox.instance1506;firefox.instance1606108;firefox.instance1858036;firefox.instance223201;firefox.instance2239;firefox.instance2429991;firefox.instance2466;firefox.instance2705;firefox.instance2721455;firefox.instance3433;firefox.instance3562;firefox.instance3660;firefox.instance4749;firefox.instance5002;firefox.instance6735;firefox.instance77106;firefox.instance868384;firefox.instance9255;parole;spotify'
+/plugins/plugin-10/show-notifications true
+/plugins/plugin-11 'separator'
+/plugins/plugin-11/expand false
+/plugins/plugin-11/style uint32 0
+/plugins/plugin-12 'clock'
+/plugins/plugin-12/digital-format '%d %b, %H:%M'
+/plugins/plugin-13 'xkb'
+/plugins/plugin-13/display-name uint32 0
+/plugins/plugin-13/display-type uint32 2
+/plugins/plugin-17 'mailwatch'
+/plugins/plugin-3 'separator'
+/plugins/plugin-3/expand true
+/plugins/plugin-3/style uint32 0
+/plugins/plugin-5 'systray'
+/plugins/plugin-5/names-ordered [<'solaar'>, <'telegramdesktop'>, <'megasync'>, <'slack'>, <'dropbox'>, <'discord'>, <'thunar'>, <'network'>, <'hexchat'>, <'task manager'>]
+/plugins/plugin-5/show-frame false
+/plugins/plugin-5/size-max uint32 22
+/plugins/plugin-5/square-icons true
+/plugins/plugin-8 'statusnotifier'
+/plugins/plugin-8/icon-size uint32 22
+/plugins/plugin-8/known-items [<'birdtray'>, <'indicator-solaar'>, <'dropbox-client-1697'>, <'dropbox-client-1350803'>, <'dropbox-client-1628'>, <'dropbox-client-1563'>, <'dropbox-client-1510'>, <'dropbox-client-1577'>, <'dropbox-client-1590'>, <'dropbox-client-1621'>, <'dropbox-client-1759'>, <'dropbox-client-5347'>, <'dropbox-client-1651'>, <'GoldenDict'>, <'dropbox-client-1497'>, <'MEGAsync'>, <'dropbox-client-2665666'>, <'Slack1'>, <'TelegramDesktop'>, <'chrome_status_icon_1'>, <'ViberPC'>, <'discord1'>, <'software-update-available'>, <'nm-applet'>]
+/plugins/plugin-8/menu-is-primary true
+/plugins/plugin-8/mode-whitelist false
+/plugins/plugin-8/single-row false
+/plugins/plugin-8/square-icons true
+/plugins/plugin-8/symbolic-icons true

@@ -1,3 +1,4 @@
+import Control.Monad
 import System.IO
 import XMonad
 import XMonad.Hooks.DynamicLog
@@ -8,7 +9,7 @@ import XMonad.Layout.IndependentScreens
 import XMonad.Layout.Gaps
 import XMonad.Layout.Spacing
 import XMonad.Util.EZConfig (additionalKeysP)
-import XMonad.Util.Run (spawnPipe)
+import XMonad.Util.Run (runProcessWithInput, spawnPipe)
 import Data.Ord
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
@@ -32,6 +33,11 @@ myWorkspaces =
   , (xK_equal, "12")
   ]
 
+dmenuXinerama :: [String] -> X String
+dmenuXinerama opts = do
+    curscreen <- (fromIntegral . W.screen . W.current) `fmap` gets windowset :: X Int
+    io $ runProcessWithInput "dmenu" ["-m", show curscreen] (unlines opts)
+
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     [ ((modMask, key), windows $ onCurrentScreen W.greedyView ws)
       | (key, ws) <- myWorkspaces
@@ -46,13 +52,13 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
       ((modMask .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
     
     -- Spawn dmenu
-    , ((modMask, xK_p), spawn "dmenu_run")
+    , ((modMask, xK_p), void $ dmenuXinerama [])
 
     -- Close focused window 
     , ((modMask .|. shiftMask, xK_c), kill)
  
      -- Rotate through the available layout algorithms
-    , ((modMask, xK_space ), sendMessage NextLayout)
+    , ((modMask, xK_space), sendMessage NextLayout)
  
     --  Reset the layouts on the current workspace to default
     , ((modMask .|. shiftMask, xK_space), setLayout $ XMonad.layoutHook conf)
@@ -107,9 +113,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     ]
     ++
     [((m .|. modMask, key), screenWorkspace sc >>= flip whenJust (windows . f))
-    | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
+    | (key, sc) <- zip [xK_w, xK_e] [0..]
     , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
-
 
 myAdditionalKeysP =
     [

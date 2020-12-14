@@ -1,5 +1,5 @@
-import Control.Monad
 import System.IO
+import Control.Monad
 import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
@@ -10,10 +10,10 @@ import XMonad.Layout.Gaps
 import XMonad.Layout.Spacing
 import XMonad.Util.EZConfig (additionalKeysP)
 import XMonad.Util.Run (runProcessWithInput, spawnPipe)
-import Data.Ord
-import qualified XMonad.StackSet as W
-import qualified Data.Map as M
 import XMonad.Util.WorkspaceCompare
+import qualified XMonad.StackSet as W
+import Data.Ord
+import qualified Data.Map as M
 
 myLayout = gaps [(U, 10), (R, 10), (L, 10), (D, 10)] $ spacingRaw True (Border 0 10 10 10) True (Border 10 10 10 10) True $
              layoutHook def
@@ -38,6 +38,12 @@ dmenuXinerama opts = do
     curscreen <- (fromIntegral . W.screen . W.current) `fmap` gets windowset :: X Int
     io $ runProcessWithInput "dmenu" ["-m", show curscreen] (unlines opts)
 
+pickExe :: X ()
+pickExe = do
+    exes <- runProcessWithInput "dmenu_path" [] ""
+    exe <- dmenuXinerama [exes]
+    spawn exe
+
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     [ ((modMask, key), windows $ onCurrentScreen W.greedyView ws)
       | (key, ws) <- myWorkspaces
@@ -52,8 +58,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
       ((modMask .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
     
     -- Spawn dmenu
-    , ((modMask, xK_p), void $ dmenuXinerama [])
-
+    , ((modMask, xK_p), pickExe)
     -- Close focused window 
     , ((modMask .|. shiftMask, xK_c), kill)
  

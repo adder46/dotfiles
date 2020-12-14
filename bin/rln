@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Uses ln with real paths
+# Applies realpath to ln's arguments
 # Usage: rln OPTION SRC DEST
 
 if [ $# -eq 0 ] || [ $# -gt 3 ]; then

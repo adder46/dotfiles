@@ -20,12 +20,12 @@ def cli(src, dest, force, hard, soft):
         x
         for x in [
             "ln",
-            "-s" if soft else "",
+            "-s" if soft else None,
             pathlib.Path(src).resolve(),
             pathlib.Path(dest).resolve(),
-            "--force" if force else "",
+            "--force" if force else None,
         ]
-        if x
+        if x is not None
     ]
     subprocess.run(options)
 

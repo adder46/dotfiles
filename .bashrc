@@ -105,3 +105,4 @@ source "$HOME/.poetry/env"
 # cargo bash completion
 source "$(rustc --print sysroot)/etc/bash_completion.d/cargo"
 
+source "$HOME/.cargo/env"

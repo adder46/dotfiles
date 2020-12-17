@@ -8,7 +8,7 @@ import click_option_group
 
 @click.command()
 @click.argument("src", type=click.Path(exists=True))
-@click.argument("dest", type=click.Path(exists=True))
+@click.argument("dest", type=click.Path())
 @click.option("-f", "--force", is_flag=True, required=False)
 @click_option_group.optgroup.group(
     "Link type", cls=click_option_group.RequiredMutuallyExclusiveOptionGroup

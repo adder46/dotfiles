@@ -6,3 +6,4 @@
 .xmonad/xmonadctl
 .xmonad/xmonadctl.hi
 .xmonad/xmonadctl.o
+bin/FoxitReader

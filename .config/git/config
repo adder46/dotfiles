@@ -1,7 +1,7 @@
 [user]
 	email = dedmauz69@gmail.com
 	name = adder46
-	signingKey = 0x434D6203C0DFE302
+	signingkey = 0x434D6203C0DFE302
 [commit]
 	gpgSign = true
 [alias]

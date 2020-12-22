@@ -106,3 +106,8 @@ source "$HOME/.poetry/env"
 source "$(rustc --print sysroot)/etc/bash_completion.d/cargo"
 
 source "$HOME/.cargo/env"
+
+# Yubikey
+export GPG_TTY="$(tty)"
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+gpgconf --launch gpg-agent

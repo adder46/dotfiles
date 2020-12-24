@@ -7,3 +7,4 @@
 .xmonad/xmonadctl.hi
 .xmonad/xmonadctl.o
 bin/FoxitReader
+.config/xfce4/terminal/accels.scm

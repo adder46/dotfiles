@@ -80,7 +80,7 @@ Config {
 
         , Run UnsafeStdinReader
 
-        , Run Com "bash" ["-c", "$HOME/bin/spotify_current_track"] "music" 10
+        , Run Com "bash" ["-c", "$HOME/bin/now_playing"] "music" 10
 
         ]
     }

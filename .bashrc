@@ -87,6 +87,11 @@ HISTFILESIZE=1000000 # increase history file size
 HISTSIZE=${HISTFILESIZE} # increase history size
 export PROMPT_COMMAND="history -a; history -n; ${PROMPT_COMMAND}" # append new entries from memory to .bash_history, and vice-versa
 
+hh() {
+    history | hstr-rs
+    history -r
+}
+
 # starship
 eval "$(starship init bash)"
 
@@ -111,3 +116,4 @@ source "$HOME/.cargo/env"
 export GPG_TTY="$(tty)"
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 gpgconf --launch gpg-agent
+

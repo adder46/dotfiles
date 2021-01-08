@@ -26,3 +26,6 @@ alias py="python3 -ic 'from pyhstr import hh'"
 
 # dpaster
 alias dpaster='~/.venvs/env-dpaster/bin/dpaster'
+
+# hstr-rs
+alias hh="hstr-rs < <(history)"

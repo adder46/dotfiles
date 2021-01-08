@@ -5,8 +5,12 @@
 [commit]
 	gpgSign = true
 [alias]
+	adr = add . --dry-run
+	br = branch
+	ci = commit --edit
+	cl = clone
 	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	pom = push origin master
 	pomf = push origin master --force
-	adr = add . --dry-run
 	rhh = reset --hard HEAD
+	st = status

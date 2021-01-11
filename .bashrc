@@ -85,6 +85,7 @@ shopt -s histappend # append new history items to .bash_history
 HISTCONTROL=ignoreboth # don't put duplicate lines or lines starting with space in the history
 HISTFILESIZE=1000000 # increase history file size
 HISTSIZE=${HISTFILESIZE} # increase history size
+export PROMPT_COMMAND="history -a" # append NEW entries from memory to .bash_history
 
 # starship
 eval "$(starship init bash)"

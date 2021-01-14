@@ -85,7 +85,8 @@ shopt -s histappend # append new history items to .bash_history
 HISTCONTROL=ignoreboth # don't put duplicate lines or lines starting with space in the history
 HISTFILESIZE=1000000 # increase history file size
 HISTSIZE=${HISTFILESIZE} # increase history size
-export PROMPT_COMMAND="history -a" # append NEW entries from memory to .bash_history
+export PROMPT_COMMAND="history -a; history -n; ${PROMPT_COMMAND}" # sync history entries in memory with history file
+if [[ $- =~ .*i.* ]]; then bind '"\C-h": "hstr-rs \C-j"'; fi # C-h keybinding for launching hstr-rs
 
 # starship
 eval "$(starship init bash)"

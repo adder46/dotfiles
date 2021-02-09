@@ -1,0 +1,49 @@
+#!/bin/bash
+
+get_row() {
+    #
+    # get cursor position by printing
+    # xterm control sequence to /dev/tty
+    #
+    printf "\033[6n" > /dev/tty
+    # then read it, and parse the row number
+    #  
+    # -s	    do not echo input coming from a terminal
+    # -r    	do not allow backslashes to escape any characters
+    # -d delim	continue until the first character of DELIM is read, rather
+    #    		than newline
+    # -a array	assign the words read to sequential indices of the array
+    #           variable ARRAY, starting at zero
+    #
+    read -srd '['
+    IFS=';' read -srd 'R' -a cursor_position
+    printf "%d\n" "${cursor_position[0]}"
+}
+
+get_column() {
+    # expand PS1 as prompt string
+    local p=${PS1@P}
+    # strip color sequences
+    p=$(sed 's/\x1b\[[0-9;]*m//' <<< "$p")
+    # strip the rest of the garbage
+    p=${p//$'\1'*([!$'\2'])$'\2'}
+    # print the length of bare PS1
+    printf "%d\n" "${#p}"
+}
+
+print_at() {
+    # \x1b7     Save
+    # \x1b8     Restore
+    # \x1b[;f   Move
+     printf "\x1B7\x1B[%d;%df%s\x1B8" "$1" "$2" "$3"
+}
+
+y="$(( $(get_row) - 1))"
+x="$(( $(get_column) + 2 ))"
+
+while (( x < "$(tput cols)" + 3 )); do
+    sleep .005
+    print_at $y $(( x-1 )) '   '
+    print_at $y $x ' pew'
+    x=$(( x+1 ))
+done

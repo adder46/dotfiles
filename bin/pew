@@ -1,20 +1,17 @@
 #!/bin/bash
 
 get_row() {
-    #
     # get cursor position by printing
     # xterm control sequence to /dev/tty
-    #
     printf "\033[6n" > /dev/tty
     # then read it, and parse the row number
-    #  
-    # -s	    do not echo input coming from a terminal
+    #
+    # -s	do not echo input coming from a terminal
     # -r    	do not allow backslashes to escape any characters
     # -d delim	continue until the first character of DELIM is read, rather
-    #    		than newline
+    #    	than newline
     # -a array	assign the words read to sequential indices of the array
     #           variable ARRAY, starting at zero
-    #
     read -srd '['
     IFS=';' read -srd 'R' -a cursor_position
     printf "%d\n" "${cursor_position[0]}"

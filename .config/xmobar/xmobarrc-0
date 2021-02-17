@@ -2,8 +2,8 @@ Config {
 
    -- appearance
      font =         "xft:Source Code Pro:size=9:antialias=true"
-   , bgColor =      "white"
-   , fgColor =      "#000000"
+   , bgColor =      "#2E3436"
+   , fgColor =      "white"
    , position =     TopW C 100
    , border =       BottomB
    , borderColor =  "#000000"
@@ -42,9 +42,9 @@ Config {
                              , "-S", "True"
                              , "--Low"      , "125000"       -- units: B/s
                              , "--High"     , "625000"       -- units: B/s
-                             , "--low"      , "#4d4d4d"
-                             , "--normal"   , "black"
-                             , "--high"     , "#a0522d"
+                             , "--low"      , "white"
+                             , "--normal"   , "gray"
+                             , "--high"     , "yellow"
                              ] 10
 
         -- cpu activity monitor
@@ -53,9 +53,9 @@ Config {
                              , "-S", "True"
                              , "--Low"      , "50"         -- units: %
                              , "--High"     , "85"         -- units: %
-                             , "--low"      , "#4d4d4d"
-                             , "--normal"   , "black"
-                             , "--high"     , "#a0522d"
+                             , "--low"      , "white"
+                             , "--normal"   , "gray"
+                             , "--high"     , "yellow"
                              ] 10
                           
         -- memory usage monitor
@@ -63,9 +63,9 @@ Config {
                              , "-S", "True"
                              , "--Low"      , "20"        -- units: %
                              , "--High"     , "90"        -- units: %
-                             , "--low"      , "#4d4d4d"
-                             , "--normal"   , "black"
-                             , "--high"     , "#a0522d"
+                             , "--low"      , "white"
+                             , "--normal"   , "gray"
+                             , "--high"     , "yellow"
                              ] 10
 
         -- swap usage monitor

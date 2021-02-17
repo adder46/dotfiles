@@ -149,7 +149,7 @@ compareNumbers = comparing (read :: String -> Int)
 
 pp h s = marshallPP s def 
     { ppOutput = hPutStrLn h
-    , ppCurrent = xmobarColor "blue" "" . wrap "[" "]"
+    , ppCurrent = xmobarColor "#42cbf5" "" . wrap "[" "]"
     , ppHiddenNoWindows = xmobarColor "grey" "" . clickable' s
     , ppVisible = wrap "(" ")"
     , ppUrgent  = xmobarColor "red" "yellow"

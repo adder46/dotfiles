@@ -16,17 +16,13 @@ import click_option_group
 @click_option_group.optgroup.option("-s", "--soft", is_flag=True)
 def cli(src, dest, force, hard, soft):
     options = [
-        x
-        for x in [
-            "ln",
-            "-s" if soft else None,
-            src,
-            dest,
-            "--force" if force else None,
-        ]
-        if x is not None
+        "ln",
+        "-s" if soft else None,
+        src,
+        dest,
+        "--force" if force else None,
     ]
-    subprocess.run(options)
+    subprocess.run(list(filter(lambda x: x is not None, options)))
 
 
 if __name__ == "__main__":

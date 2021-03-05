@@ -4,14 +4,17 @@
 # and pipes them to dmenu
 # usage: ./passmenu
 
+shopt -s extglob
+
 get_passwords() {
-    local files=(~/.password-store/*)
+    local files=(~/.password-store/*/**)
     # expand */ to produce a pattern,
     # and match it against the beginning
     # of every element of the array.
     # ## means the result is the longest
     # matching pattern deleted.
     files=("${files[@]##*/}")
+    IFS=$'\n' files=("$(sort <<< "${files[*]}")"); unset IFS
     for file in "${files[@]}"; do
         # expand .* to produce a pattern,
         # and match it against the trailing

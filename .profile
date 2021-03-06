@@ -32,5 +32,6 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.cabal:$PATH"
 export PATH="/opt/gradle/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="/usr/local/go/bin:$PATH"
 
 export LC_TIME=en_US.utf8

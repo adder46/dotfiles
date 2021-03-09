@@ -1,0 +1,56 @@
+#!/usr/bin/env python3
+
+import re
+import subprocess
+from pathlib import Path
+from typing import Dict
+
+
+def parse_output(output: str) -> Dict[str, str]:
+    regex = r'Total\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)'
+    labels = ('files', 'lines', 'code', 'comments', 'blanks')
+    matches = re.search(regex, output).groups()
+    return {
+        label: group for label, group in zip(labels, matches)
+    }
+
+
+def write_markdown(result: Dict[str, str]) -> None:
+    longest_project_name = max(result.keys(), key=len)
+    headers = [
+        'Project'.ljust(len(longest_project_name)),
+        'Files'.ljust(10),
+        'Lines'.ljust(10),
+        'Code'.ljust(10),
+        'Comments'.ljust(10),
+        'Blanks'.ljust(10),
+    ]
+    separators = ['-' * len(header) for header in headers]
+    header_lengths = [len(header) for header in headers]
+
+    with open('loco_result.md', 'w') as f:
+        print('|' + '|'.join(headers) + '|', file=f)
+        print('|' + '|'.join(separators) + '|', file=f)
+        for project, stats in sorted(result.items()):
+            print(
+                f'|{project.ljust(len(longest_project_name))}|',
+                '|'.join(v.ljust(i) for i, v in zip(header_lengths[1:], stats.values())),
+                end='|' + '\n',
+                sep='',
+                file=f
+            )
+
+
+def main() -> None:
+    result = {}
+
+    for project in Path('.').iterdir():
+        if project.is_dir():
+            tokei_output = subprocess.check_output(['tokei', project])
+            result[project.name] = parse_output(tokei_output.decode('utf-8'))
+
+    write_markdown(result)
+
+
+if __name__ == '__main__':
+    main()

@@ -13,8 +13,6 @@ get_passwords() {
     # of every element of the array.
     # ## means the result is the longest
     # matching pattern deleted.
-    files=("${files[@]##*/}")
-    IFS=$'\n' files=("$(sort <<< "${files[*]}")"); unset IFS
     for file in "${files[@]}"; do
         # expand .* to produce a pattern,
         # and match it against the trailing
@@ -22,7 +20,11 @@ get_passwords() {
         # case, file). 
         # % means the result is the shortest
         # matching pattern deleted.
-        printf "%s\n" "${file%.*}" 
+        dir="${file%/*}"
+        dir="${dir##*/}"
+        filename="${file##*/}"
+        filename="${filename%.*}"
+        printf "%s/%s\n" "$dir" "$filename"
     done
 }
 

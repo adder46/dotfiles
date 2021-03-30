@@ -25,7 +25,7 @@ alias tb='nc termbin.com 9999'
 alias py="python3 -ic 'from pyhstr import hh'"
 
 # dpaster
-alias dpaster='~/.venvs/env-dpaster/bin/dpaster'
+alias dpaster='dpaster-rs'
 
 # hstr-rs
-alias hh='hstr-rs bash'
+alias hh='hstr-rs'
